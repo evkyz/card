@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,11 +17,17 @@ class CardTest {
     @BeforeAll
     static void setUpAll() {
         System.setProperty("webdriver.gecko.driver", "driver/win/geckodriver.exe");
+        System.setProperty("webdriver.chome.driver", "driver/win/geckodriver.exe");
+
     }
 
     @BeforeEach
     void setUp() {
-        driver = new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new FirefoxDriver(options);
     }
 
     @Test
