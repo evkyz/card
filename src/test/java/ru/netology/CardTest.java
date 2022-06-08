@@ -17,8 +17,6 @@ class CardTest {
     @BeforeAll
     static void setUpAll() {
         System.setProperty("webdriver.gecko.driver", "driver/win/geckodriver.exe");
-        System.setProperty("webdriver.chome.driver", "driver/win/geckodriver.exe");
-
     }
 
     @BeforeEach
