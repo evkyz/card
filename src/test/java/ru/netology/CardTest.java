@@ -18,7 +18,7 @@ class CardTest {
     @BeforeAll
     static void setUpAll() {
         System.setProperty("webdriver.gecko.driver", "driver/win/geckodriver.exe");
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
     }
 
     @BeforeEach
@@ -37,13 +37,13 @@ class CardTest {
         driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79031234567");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
-        String text=driver.findElement(By.cssSelector(".paragraph")).getText();
+        String text = driver.findElement(By.cssSelector(".paragraph")).getText();
         assertEquals("  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text);
     }
 
     @AfterEach
-    void tearsDown(){
+    void tearsDown() {
         driver.quit();
-        driver=null;
+        driver = null;
     }
 }
