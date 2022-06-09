@@ -45,7 +45,7 @@ class CardTest {
     void noName() {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("");
-        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+7903123994567");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79031234567");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
         String text=driver.findElement(By.cssSelector("[data-test-id=\"name\"] .input__inner .input__sub")).getText();
@@ -83,6 +83,19 @@ class CardTest {
         driver.findElement(By.cssSelector(".button__text")).click();
         String text=driver.findElement(By.cssSelector("[data-test-id=\"phone\"] .input__inner .input__sub")).getText();
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", text);
+    }
+
+    @Test
+    void no() {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("");
+        driver.findElement(By.cssSelector(".checkbox__box")).click();
+        driver.findElement(By.cssSelector(".button__text")).click();
+        String text=driver.findElement(By.cssSelector("[data-test-id=\"name\"] .input__inner .input__sub")).getText();
+        assertEquals("Поле обязательно для заполнения", text);
+        String text2=driver.findElement(By.cssSelector("[data-test-id=\"phone\"] .input__inner .input__sub")).getText();
+        assertEquals("На указанный номер моб. тел. будет отправлен смс-код для подтверждения заявки на карту. Проверьте, что номер ваш и введен корректно.", text2);
     }
 
     @AfterEach
